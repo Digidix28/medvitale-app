@@ -25,17 +25,17 @@ class SignInForm extends StatelessWidget {
           TextFormField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(hintText: "test@email.com"),
-            validator: EmailValidator(errorText: "Use a valid email!"),
-            onSaved: (email) => _email = email!,
+            validator: null,
+            onChanged: (email) => userRecap.setEmail(email.toString().trim()),
           ),
           const SizedBox(height: defaultPadding),
-          TextFieldName(text: "Password"),
+          TextFieldName(text: "Mot de passe"),
           TextFormField(
             // We want to hide our password
             obscureText: true,
             decoration: InputDecoration(hintText: "******"),
             validator: passwordValidator,
-            onSaved: (password) => _password = password!,
+            onChanged: (pass) => userRecap.setPass(pass.toString().trim()),
           ),
           const SizedBox(height: defaultPadding),
         ],

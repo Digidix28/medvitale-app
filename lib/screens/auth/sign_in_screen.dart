@@ -1,6 +1,9 @@
+import 'package:doctor_app/auth_service.dart';
 import 'package:doctor_app/screens/auth/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:doctor_app/screens/main_page.dart';
+import 'package:provider/provider.dart';
 
 import '../../constants.dart';
 import 'components/sign_in_form.dart';
@@ -11,7 +14,7 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // But still same problem, let's fixed it
+    final authService = Provider.of<AuthService>(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
@@ -32,7 +35,7 @@ class SignInScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Sign In",
+                      "Se connecter",
                       style: Theme.of(context)
                           .textTheme
                           .headline5!
@@ -40,7 +43,7 @@ class SignInScreen extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Text("Don't have an account?"),
+                        Text("Vous n'avez pas de compte ?"),
                         TextButton(
                           onPressed: () => Navigator.push(
                             context,
@@ -49,7 +52,7 @@ class SignInScreen extends StatelessWidget {
                             ),
                           ),
                           child: Text(
-                            "Sign Up!",
+                            "Inscrivez-vous !",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -61,15 +64,28 @@ class SignInScreen extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {
+                        style: TextButton.styleFrom(
+                          backgroundColor: medvitaleColor,
+                        ),
+                        onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                            // Sign up form is done
-                            // It saved our inputs
-                            _formKey.currentState!.save();
-                            //  Sign in also done
+                            await authService
+                                .signInWithEmailAndPassword(
+                                    userRecap.email!, userRecap.password!)
+                                .then((value) {
+                              if (value != null) {
+                                _formKey.currentState!.save();
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => MainPage()));
+                              } else {
+                                null;
+                              }
+                            });
                           }
                         },
-                        child: Text("Sign In"),
+                        child: Text("Se connecter"),
                       ),
                     ),
                   ],

@@ -2,8 +2,9 @@ import 'package:doctor_app/constants.dart';
 import 'package:doctor_app/screens/auth/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:form_field_validator/form_field_validator.dart';
-
+import 'package:doctor_app/screens/main_page.dart';
+import 'package:provider/provider.dart';
+import '../../auth_service.dart';
 import 'components/sign_up_form.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -12,7 +13,9 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // But still same problem, let's fixed it
+    
+    final authService = Provider.of<AuthService>(context);
+    SignUpForm signUpForm = SignUpForm(formKey: _formKey);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
@@ -31,7 +34,7 @@ class SignUpScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Create Account",
+                      "Créer un compte",
                       style: Theme.of(context)
                           .textTheme
                           .headline5!
@@ -39,7 +42,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Text("Already have an account?"),
+                        Text("Vous avez déjà un compte ?"),
                         TextButton(
                           onPressed: () => Navigator.push(
                               context,
@@ -47,26 +50,36 @@ class SignUpScreen extends StatelessWidget {
                                 builder: (context) => SignInScreen(),
                               )),
                           child: Text(
-                            "Sign In!",
+                            "Connectez-vous !",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(height: defaultPadding * 2),
-                    SignUpForm(formKey: _formKey),
+
+                    signUpForm,
+
                     const SizedBox(height: defaultPadding * 2),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
+                         style: TextButton.styleFrom(
+                        backgroundColor: medvitaleColor,
+                      ),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
+                            authService.createUserWithEmailAndPassword(userRecap.email!, userRecap.password!);
                             // Sign up form is done
                             // It saved our inputs
                             _formKey.currentState!.save();
+                            Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MainPage()));
                           }
                         },
-                        child: Text("Sign Up"),
+                        child: Text("S'inscrire"),
                       ),
                     ),
                   ],

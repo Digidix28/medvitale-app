@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:provider/provider.dart';
 
+import '../../../auth_service.dart';
 import '../../../constants.dart';
 
 class SignUpForm extends StatelessWidget {
@@ -11,44 +13,51 @@ class SignUpForm extends StatelessWidget {
 
   final GlobalKey formKey;
 
-  late String _userName, _email, _password, _phoneNumber;
+  String? _userName, _email, _password, _phoneNumber;
+
+  String get email {
+    return _email!;
+  }
+
 
   @override
   Widget build(BuildContext context) {
+    final authService = Provider.of<AuthService>(context);
+
     return Form(
       key: formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextFieldName(text: "Username"),
+          TextFieldName(text: "Identifiant"),
           TextFormField(
-            decoration: InputDecoration(hintText: "theflutterway"),
-            validator: RequiredValidator(errorText: "Username is required"),
+            decoration: InputDecoration(hintText: "BetaTesteur"),
+            validator: RequiredValidator(errorText: "L'identifiant est requis"),
             // Let's save our username
-            onSaved: (username) => _userName = username!,
+            onChanged: (username){
+              _userName = username;
+            } ,
           ),
           const SizedBox(height: defaultPadding),
-          // We will fixed the error soon
-          // As you can see, it's a email field
-          // But no @ on keybord
+          
           TextFieldName(text: "Email"),
           TextFormField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(hintText: "test@email.com"),
-            validator: EmailValidator(errorText: "Use a valid email!"),
-            onSaved: (email) => _email = email!,
+            validator: null,
+            onChanged: (email) => userRecap.setEmail(email.toString().trim()),
           ),
           const SizedBox(height: defaultPadding),
-          TextFieldName(text: "Phone"),
+          TextFieldName(text: "Numéro de Télephone"),
           // Same for phone number
           TextFormField(
             keyboardType: TextInputType.phone,
-            decoration: InputDecoration(hintText: "+123487697"),
-            validator: RequiredValidator(errorText: "Phone number is required"),
+            decoration: InputDecoration(hintText: "0664268666"),
+            validator: RequiredValidator(errorText: "Le numéro de télephone est requis"),
             onSaved: (phoneNumber) => _phoneNumber = phoneNumber!,
           ),
           const SizedBox(height: defaultPadding),
-          TextFieldName(text: "Password"),
+          TextFieldName(text: "Mot de passe"),
 
           TextFormField(
             // We want to hide our password
@@ -58,15 +67,15 @@ class SignUpForm extends StatelessWidget {
             onSaved: (password) => _password = password!,
             // We also need to validate our password
             // Now if we type anything it adds that to our password
-            onChanged: (pass) => _password = pass,
+            onChanged: (pass) => userRecap.setPass(pass.toString().trim()),
           ),
           const SizedBox(height: defaultPadding),
-          TextFieldName(text: "Confirm Password"),
+          /*TextFieldName(text: "Confirmer le mot de passe"),
           TextFormField(
             obscureText: true,
             decoration: InputDecoration(hintText: "*****"),
-            validator: (pass) => MatchValidator(errorText: "Password do not  match").validateMatch(pass!, _password),
-          ),
+            validator: (pass) => MatchValidator(errorText: "les mots de passes ne correspondent pas").validateMatch(pass!, _password),
+          ),*/
         ],
       ),
     );
@@ -87,7 +96,7 @@ class TextFieldName extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: defaultPadding / 3),
       child: Text(
         text,
-        style: TextStyle(fontWeight: FontWeight.w600, color: Colors.black54),
+        style: TextStyle(fontWeight: FontWeight.w600, color: Colors.black),
       ),
     );
   }

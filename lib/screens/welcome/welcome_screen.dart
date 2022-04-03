@@ -1,14 +1,20 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor_app/constants.dart';
 import 'package:doctor_app/screens/auth/sign_in_screen.dart';
 import 'package:doctor_app/screens/auth/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
+
+import '../../auth_service.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final authService = Provider.of<AuthService>(context);
+    final _fireStore = FirebaseFirestore.instance;
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
@@ -20,9 +26,7 @@ class WelcomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Spacer(),
-                  SvgPicture.asset(
-                    "assets/icons/gerda_logo.svg",
-                  ),
+                  Text("Medvitale",style : TextStyle( fontWeight: FontWeight.bold,color: Colors.white,fontSize: 30),),
                   Spacer(),
                   // As you can see we need more paddind on our btn
                   SizedBox(
@@ -35,9 +39,9 @@ class WelcomeScreen extends StatelessWidget {
                         ),
                       ),
                       style: TextButton.styleFrom(
-                        backgroundColor: Color(0xFF6CD8D1),
+                        backgroundColor: medvitaleColor,
                       ),
-                      child: Text("Sign Up"),
+                      child: Text("S'inscrire"),
                     ),
                   ),
                   Padding(
@@ -46,20 +50,21 @@ class WelcomeScreen extends StatelessWidget {
                     child: SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () => Navigator.push(
+                        onPressed: () {
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => SignInScreen(),
-                            )),
+                            ));},
                         style: TextButton.styleFrom(
                           // backgroundColor: Color(0xFF6CD8D1),
                           elevation: 0,
                           backgroundColor: Colors.transparent,
                           shape: RoundedRectangleBorder(
-                            side: BorderSide(color: Color(0xFF6CD8D1)),
+                            side: BorderSide(color: medvitaleColor),
                           ),
                         ),
-                        child: Text("Sign In"),
+                        child: Text("Se connecter"),
                       ),
                     ),
                   ),

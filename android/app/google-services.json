@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "924453587276",
+    "project_id": "medvitale-a19c4",
+    "storage_bucket": "medvitale-a19c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:924453587276:android:9b140972a82916d0e9a7e9",
+        "android_client_info": {
+          "package_name": "com.example.doctor_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "924453587276-jr0vdmhn169qrspprf9qbstctjfnng3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCYTG7lBc2wHyTeIYESkybK5s1KwhIKdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "924453587276-jr0vdmhn169qrspprf9qbstctjfnng3r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
