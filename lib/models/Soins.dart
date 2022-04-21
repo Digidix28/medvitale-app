@@ -14,7 +14,9 @@ class Soins {
   List<String>? etape2;
   List<String>? etape3;
 
-  Soins(String name, typeD type, List<String> etape1, List<String> etape2, {List<String>? etape3, String? q1, String? q2,String? q3}){
+  Soins(String name, typeD type, List<String> etape1, 
+  List<String> etape2, {List<String>? etape3, String? q1, 
+  String? q2,String? q3}){
     this.name = name;
     this.type = type;
     this.etape1 = etape1;
@@ -26,7 +28,6 @@ class Soins {
   }
   
 }
-
 enum typeD{
   ttf,
   ftf,

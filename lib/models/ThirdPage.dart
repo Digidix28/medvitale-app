@@ -75,7 +75,7 @@ class _ThirdPageState extends State<ThirdPage> {
                     ),
                     height: 30,
                     width: double.infinity,
-                    child: Center(child: (date == null)? Text("choisir une date", style: TextStyle(color: Colors.grey),) : Text(date.toString()))),
+                    child: Center(child: (date == null)? Text("choisir une date", style: TextStyle(color: Colors.grey[700]),) : Text(date.toString().substring(0,10)))),
               ),
 
               const SizedBox(height: defaultPadding * 2),

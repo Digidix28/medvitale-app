@@ -1,4 +1,5 @@
 import 'package:doctor_app/auth_service.dart';
+import 'package:doctor_app/screens/HomePage.dart';
 import 'package:doctor_app/screens/auth/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -78,7 +79,7 @@ class SignInScreen extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => MainPage()));
+                                        builder: (context) => HomePage()));
                               } else {
                                 null;
                               }

@@ -1,4 +1,6 @@
+import 'package:doctor_app/UserData.dart';
 import 'package:doctor_app/Wrapper.dart';
+import 'UserData.dart';
 import 'package:doctor_app/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -19,7 +21,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<AuthService>(create: (context) => AuthService(),)
+        Provider<AuthService>(create: (context) => AuthService(),),
+        Provider<UserData>(create: (context) => UserData() )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

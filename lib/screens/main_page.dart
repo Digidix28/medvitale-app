@@ -6,6 +6,8 @@ import 'package:doctor_app/models/StepPages.dart';
 import 'package:doctor_app/models/ThirdPage.dart';
 import 'package:doctor_app/models/typeDeSoins.dart';
 import 'package:doctor_app/models/DetailDesSoins.dart';
+import 'package:doctor_app/screens/HomePage.dart';
+import 'package:doctor_app/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:doctor_app/models/secondPage.dart';
 import 'package:provider/provider.dart';
@@ -75,18 +77,7 @@ class _MainPageState extends State<MainPage> {
           ]),
           content: DetailDesSoins(),
           isActive: _currentStep >= 3),
-      Step(
-          title:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text("Vérification finale",
-                style: TextStyle(
-                    color: primaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 17)),
-            Icon(Icons.check, color: primaryColor),
-          ]),
-          content: SecondPage(),
-          isActive: _currentStep >= 4),
+      
     ];
     Stepper getStepper() {
       return Stepper(
@@ -107,14 +98,14 @@ class _MainPageState extends State<MainPage> {
                 .doc(_cu.uid)
                 .collection("rdv")
                 .add({
-                  'nom': _userInfo.nom,
-                  'prenom': _userInfo.prenom,
-                  'adresse': _userInfo.adresse,
-                  'date': Timestamp.fromDate(_userInfo.date!) ,
-                  'taux': _userInfo.tauxPriseEnCharge,
-                  'soin': _userInfo.soins!.name,
-                });
-                
+              'nom': _userInfo.nom,
+              'prenom': _userInfo.prenom,
+              'adresse': _userInfo.adresse,
+              'date': Timestamp.fromDate(_userInfo.date!),
+              'taux': _userInfo.tauxPriseEnCharge,
+              'soin': _userInfo.soins!.name,
+            }).then((value) => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomePage())));
           }
         },
         onStepCancel:
@@ -129,10 +120,12 @@ class _MainPageState extends State<MainPage> {
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
-            title: Text("Mevitale"),
+            title: Text("Prendre rendez-vous"),
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
-              onPressed: () => authService.signOut(),
+              onPressed: ()  {
+               MaterialPageRoute(
+                                    builder: (context) => HomePage());}
             ),
             centerTitle: true,
             backgroundColor: medvitaleColor,

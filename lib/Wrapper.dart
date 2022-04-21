@@ -1,5 +1,6 @@
 import 'package:doctor_app/auth_service.dart';
 import 'package:doctor_app/constants.dart';
+import 'package:doctor_app/screens/HomePage.dart';
 import 'package:doctor_app/screens/auth/sign_in_screen.dart';
 import 'package:doctor_app/screens/main_page.dart';
 import 'package:doctor_app/screens/welcome/welcome_screen.dart';
@@ -20,7 +21,7 @@ class Wrapper extends StatelessWidget {
           final User? user = snapshot.data;
           if(user != null){
             currentUser = user;
-            return MainPage();
+            return HomePage();
           }else{
             return WelcomeScreen();
           }

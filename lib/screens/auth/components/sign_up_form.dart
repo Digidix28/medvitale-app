@@ -29,6 +29,7 @@ class SignUpForm extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+
           TextFieldName(text: "Identifiant"),
           TextFormField(
             decoration: InputDecoration(hintText: "BetaTesteur"),
@@ -48,8 +49,8 @@ class SignUpForm extends StatelessWidget {
             onChanged: (email) => userRecap.setEmail(email.toString().trim()),
           ),
           const SizedBox(height: defaultPadding),
+
           TextFieldName(text: "Numéro de Télephone"),
-          // Same for phone number
           TextFormField(
             keyboardType: TextInputType.phone,
             decoration: InputDecoration(hintText: "0664268666"),
@@ -57,25 +58,20 @@ class SignUpForm extends StatelessWidget {
             onSaved: (phoneNumber) => _phoneNumber = phoneNumber!,
           ),
           const SizedBox(height: defaultPadding),
-          TextFieldName(text: "Mot de passe"),
 
+          TextFieldName(text: "Mot de passe"),
           TextFormField(
-            // We want to hide our password
+            // Il faut cacher le mot de passe
             obscureText: true,
             decoration: InputDecoration(hintText: "******"),
+            // Le validator est la classe qui gère les restrictions que l'on souhaite appliquer.
             validator: passwordValidator,
+            // Ensuite il ne reste plus qu'à sauvegarder le mot de passe localement.
             onSaved: (password) => _password = password!,
-            // We also need to validate our password
-            // Now if we type anything it adds that to our password
             onChanged: (pass) => userRecap.setPass(pass.toString().trim()),
           ),
           const SizedBox(height: defaultPadding),
-          /*TextFieldName(text: "Confirmer le mot de passe"),
-          TextFormField(
-            obscureText: true,
-            decoration: InputDecoration(hintText: "*****"),
-            validator: (pass) => MatchValidator(errorText: "les mots de passes ne correspondent pas").validateMatch(pass!, _password),
-          ),*/
+        
         ],
       ),
     );
