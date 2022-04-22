@@ -77,7 +77,6 @@ class _MainPageState extends State<MainPage> {
           ]),
           content: DetailDesSoins(),
           isActive: _currentStep >= 3),
-      
     ];
     Stepper getStepper() {
       return Stepper(
@@ -122,11 +121,10 @@ class _MainPageState extends State<MainPage> {
           appBar: AppBar(
             title: Text("Prendre rendez-vous"),
             leading: IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: ()  {
-               MaterialPageRoute(
-                                    builder: (context) => HomePage());}
-            ),
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context);
+                }),
             centerTitle: true,
             backgroundColor: medvitaleColor,
             bottom: TabBar(

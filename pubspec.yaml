@@ -60,6 +60,10 @@ flutter:
     - assets/images/medical-chechup.png
     - assets/images/stethoscope.png
     - assets/images/doctor.png
+    - assets/images/hugo-list-is-empty.png
+    - assets/images/mirage-list-is-empty.png
+    - assets/images/pale-list-is-empty.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

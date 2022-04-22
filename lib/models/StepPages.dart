@@ -1,9 +1,4 @@
-import 'package:doctor_app/main.dart';
-import 'package:flutter/material.dart';
-import 'package:doctor_app/constants.dart';
 import 'package:doctor_app/models/Soins.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:doctor_app/screens/auth/components/sign_up_form.dart';
 
 class UserRecap {
   String? nom;

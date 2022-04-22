@@ -4,7 +4,6 @@ import 'package:doctor_app/constants.dart';
 import 'package:doctor_app/screens/main_page.dart';
 import 'package:doctor_app/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -89,7 +88,7 @@ class HomePage extends StatelessWidget {
                     const SizedBox(
                       height: 35,
                     ),
-                    Text("Hello Idriss,",
+                    Text("Bienvenue sur Medvitale",
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w900,
@@ -97,7 +96,7 @@ class HomePage extends StatelessWidget {
                     const SizedBox(height: 10),
                     Flexible(
                       child: Text(
-                        "Bienvenue sur Medvitale",
+                        "1° consiergerie médicale",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -135,7 +134,21 @@ class HomePage extends StatelessWidget {
                             fontSize: 21)),
                     const SizedBox(height: 10),
                      SizedBox(height: 335,
-                      child: ListView.builder(
+                      child: (rdv.length == 0)? Center(child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Image(image: AssetImage("assets/images/mirage-list-is-empty.png"),height: 200,),
+                      
+                          Text("Vous n'avez aucun rendez-vous pour l'instant",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14)),
+                    
+                        ],
+                      ),) :
+                      
+                      ListView.builder(
                 physics: BouncingScrollPhysics(),
                 itemCount: rdv.length,
                 itemBuilder: (BuildContext context, int index) {
@@ -185,7 +198,9 @@ class HomePage extends StatelessWidget {
           ]),
         );
       }else{
+        
         return Scaffold(body: Center(child: CircularProgressIndicator()));
+        
       }
       }
     );

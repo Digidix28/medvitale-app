@@ -60,11 +60,14 @@ class _ThirdPageState extends State<ThirdPage> {
                       context: context,
                       initialDate: DateTime.now(),
                       firstDate: DateTime(1950),
-                      lastDate: DateTime.now());
+                      lastDate: DateTime(2030));
+                      if(datetemp != null){
                   setState(() {
+                    
                     date = datetemp;
-                    userRecap.setDate(date!);;
-                  });
+                    userRecap.setDate(date!);
+                  }
+                  );}else{}
                 },
                 child: Container(
                     decoration: BoxDecoration(

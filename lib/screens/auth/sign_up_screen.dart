@@ -68,16 +68,22 @@ class SignUpScreen extends StatelessWidget {
                          style: TextButton.styleFrom(
                         backgroundColor: medvitaleColor,
                       ),
-                        onPressed: () {
+                        onPressed: () async{
                           if (_formKey.currentState!.validate()) {
-                            authService.createUserWithEmailAndPassword(userRecap.email!, userRecap.password!);
-                            // Sign up form is done
-                            // It saved our inputs
-                            _formKey.currentState!.save();
+                           await authService.createUserWithEmailAndPassword(userRecap.email!, userRecap.password!).then((value) {if(value != null){
+                              _formKey.currentState!.save();
                             Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => HomePage()));
+                           }else{
+                             null;
+                           }
+                           }
+                           );
+                            // Sign up form is done
+                            // It saved our inputs
+                           
                           }
                         },
                         child: Text("S'inscrire"),

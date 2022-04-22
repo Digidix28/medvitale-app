@@ -33,7 +33,7 @@ class SignUpForm extends StatelessWidget {
           TextFieldName(text: "Identifiant"),
           TextFormField(
             decoration: InputDecoration(hintText: "BetaTesteur"),
-            validator: RequiredValidator(errorText: "L'identifiant est requis"),
+            validator: null,
             // Let's save our username
             onChanged: (username){
               _userName = username;
@@ -45,7 +45,7 @@ class SignUpForm extends StatelessWidget {
           TextFormField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(hintText: "test@email.com"),
-            validator: null,
+            validator: RequiredValidator(errorText: "L'adresse email est requise."),
             onChanged: (email) => userRecap.setEmail(email.toString().trim()),
           ),
           const SizedBox(height: defaultPadding),
@@ -54,7 +54,7 @@ class SignUpForm extends StatelessWidget {
           TextFormField(
             keyboardType: TextInputType.phone,
             decoration: InputDecoration(hintText: "0664268666"),
-            validator: RequiredValidator(errorText: "Le numéro de télephone est requis"),
+            validator: null,
             onSaved: (phoneNumber) => _phoneNumber = phoneNumber!,
           ),
           const SizedBox(height: defaultPadding),
