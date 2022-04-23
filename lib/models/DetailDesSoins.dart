@@ -197,6 +197,7 @@ class _CustomPageState extends State<CustomPage> {
                       onTap: () {
                         setState(() {
                           indexFTF = index;
+                          
                         });
                       })
                 );

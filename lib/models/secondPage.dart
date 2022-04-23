@@ -31,7 +31,6 @@ class _SecondPageState extends State<SecondPage> {
 //Choix du genre 
               CheckboxListTile(
                   value: homme,
-                  tileColor: (homme) ? color : null,
                   activeColor: primaryColor,
                   title: Text("Homme"),
                   onChanged: (value) {
@@ -42,7 +41,6 @@ class _SecondPageState extends State<SecondPage> {
                     }});
                   }),
               CheckboxListTile(
-                  tileColor: (femme) ? color : null,
                   activeColor: primaryColor,
                   value: femme,
                   title: Text("Femme"),

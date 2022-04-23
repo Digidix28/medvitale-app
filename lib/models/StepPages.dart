@@ -8,6 +8,7 @@ class UserRecap {
   String? adresse ; 
   DateTime? date ;
   Soins? soins;
+  String? description;
   bool hasOrdonnance = false;
   String? tauxPriseEnCharge;
   int? nb_seances ; 
@@ -15,6 +16,10 @@ class UserRecap {
   double? height;
 
   UserRecap(){
+  }
+
+  void setDescription(String description){
+    this.description = description;
   }
 
   void setAdresse(String adresse){

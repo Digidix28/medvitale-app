@@ -63,6 +63,8 @@ flutter:
     - assets/images/hugo-list-is-empty.png
     - assets/images/mirage-list-is-empty.png
     - assets/images/pale-list-is-empty.png
+    - assets/images/detail.png
+    - assets/images/doc.png
 
   #   - images/a_dot_ham.jpeg
 
