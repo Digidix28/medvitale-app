@@ -144,7 +144,7 @@ class DetailsPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    "Vous avez réserver un/une " + this.soin + ". Un infirmier viendra vous rendre-visite le " + this.date + "afin de vous fournir les soins nécessaires.",
+                    "Vous avez réserver un/une " + this.soin + ". Un infirmier viendra vous rendre-visite le " + this.date + " afin de vous fournir les soins nécessaires.",
                     style: TextStyle(fontSize: 13, color: Colors.black),
                   ),
                   SizedBox(
