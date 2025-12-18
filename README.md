@@ -1,3 +1,17 @@
+# 📱 App Overview
+
+The following mockups illustrate the **complete user journey**, from authentication to appointment booking and consultation details.
+
+<p align="center">
+  <img src="medvitale_overview_1.png" width="900"/>
+</p>
+
+<p align="center">
+  <img src="medvitale_overview_2.png" width="900"/>
+</p>
+
+---
+
 # Medvitale — Mobile Healthcare Booking App
 
 Medvitale is a **Flutter mobile application** that allows users to **book at-home healthcare services** such as nurses, midwives, or physiotherapists.
@@ -26,20 +40,6 @@ The concept can be summarized as:
 
 ---
 
-## 📱 App Overview
-
-The following mockups illustrate the **complete user journey**, from authentication to appointment booking and consultation details.
-
-<p align="center">
-  <img src="medvitale_overview_1.png" width="900"/>
-</p>
-
-<p align="center">
-  <img src="medvitale_overview_2.png" width="900"/>
-</p>
-
----
-
 ## 🛠️ Tech Stack
 
 - **Flutter** (Dart)
@@ -64,4 +64,5 @@ medvitale-app/
 ├── web/              # Web configuration
 ├── pubspec.yaml      # Dependencies
 └── README.md
+
 
