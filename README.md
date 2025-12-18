@@ -31,11 +31,11 @@ The concept can be summarized as:
 The following mockups illustrate the **complete user journey**, from authentication to appointment booking and consultation details.
 
 <p align="center">
-  <img src="previews/overview_1.png" width="900"/>
+  <img src="medvitale_overview_1.png" width="900"/>
 </p>
 
 <p align="center">
-  <img src="previews/overview_2.png" width="900"/>
+  <img src="medvitale_overview_2.png" width="900"/>
 </p>
 
 ---
@@ -64,3 +64,4 @@ medvitale-app/
 ├── web/              # Web configuration
 ├── pubspec.yaml      # Dependencies
 └── README.md
+
